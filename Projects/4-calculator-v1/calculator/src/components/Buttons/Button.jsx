@@ -1,13 +1,15 @@
-import styles from "./Button.module.css";
+// import styles from "./Button.module.css";
 
-function Button({ num }) {
-  return (
-    <>
-      {num.map((nums) => (
-        <button className={styles.button}>{nums}</button>
-      ))}
-    </>
-  );
-}
+// function Button({ num, onButtonClick }) {
+//   return (
+//     <>
+//       {num.map((nums) => (
+//         <button className={styles.button} key={nums} onClick={()=>onButtonClick(nums)}>
+//           {nums}
+//         </button>
+//       ))}
+//     </>
+//   );
+// }
 
-export default Button;
+// export default Button;

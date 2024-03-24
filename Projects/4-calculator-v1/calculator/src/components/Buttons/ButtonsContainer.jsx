@@ -1,7 +1,7 @@
 import styles from "./ButtonsContainer.module.css";
-import Button from "./Button";
-function Buttons() {
-  const numbers = [
+// import Button from "./Button";
+function Buttons({ onButtonClick }) {
+  const buttonValues = [
     "C",
     1,
     2,
@@ -22,8 +22,17 @@ function Buttons() {
   ];
   return (
     <div className={styles.buttonsContainer}>
-      {/* {numbers.map((number) => { */}
-      <Button num={numbers}></Button>
+      {/* <Button num={numbers} onButtonClick={()=>onButtonClick()}></Button> */}
+
+      {buttonValues.map((buttonValue) => (
+        <button
+          className={styles.button}
+          key={buttonValue}
+          onClick={() => onButtonClick(buttonValue)}
+        >
+          {buttonValue}
+        </button>
+      ))}
     </div>
   );
 }
