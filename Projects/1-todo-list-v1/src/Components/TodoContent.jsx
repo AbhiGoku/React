@@ -1,16 +1,16 @@
-function TodoContent({ todoName, todoDate }) {
+import TodoItem from "./TodoItem";
+
+function TodoContent({ todoItems }) {
   return (
     <>
-      <div class="container ">
-        <div class="row my-row">
-          <div class="col-4">{todoName}</div>
-          <div class="col-4">{todoDate}</div>
-          <div class="col-2">
-            <button type="button" class="btn btn-danger my-btn">
-              Delete
-            </button>
-          </div>
-        </div>
+      <div >
+        {todoItems.map((item) => (
+          <TodoItem
+            todoDate={item.todoDate}
+            todoName={item.name}
+            onDeleteClick={onDeleteClick}
+          ></TodoItem>
+        ))}
       </div>
     </>
   );
