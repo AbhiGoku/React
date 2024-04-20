@@ -1,37 +1,27 @@
-import { useState } from "react";
+import { useRef } from "react";
 import { IoMdAddCircle } from "react-icons/io";
 
 function AddTodo({ handleNewItem }) {
-  const [todoName, setTodoName] = useState("");
-  const [dueDate, setDueDate] = useState("");
-
-  const handleNameChange = (event) => {
-    setTodoName(event.target.value);
-  };
-
-  const handleDateChange = (event) => {
-    setDueDate(event.target.value);
-  };
+  const todoNameElement = useRef(0);
+  const todoDueDateElement = useRef(0);
 
   const handleAddButtonClicked = () => {
-    handleNewItem(todoName, dueDate);
-    setDueDate("");
-    setTodoName("");
+    const todoName = todoNameElement.current.value;
+    const dueDate = todoDueDateElement.current.value;
+    onNewItem(todoName, dueDate);
+
+    todoDueDateElement.current.value = "";
+    todoNameElement.current.value = "";
   };
 
   return (
     <div className="container text-center">
-      <div className="row my-row">
+      <form className="row my-row">
         <div className="col-4">
-          <input
-            type="text"
-            placeholder="enter todo"
-            value={todoName}
-            onChange={handleNameChange}
-          />
+          <input type="text" ref={todoNameElement} placeholder="enter todo" />
         </div>
         <div className="col-4">
-          <input type="date" value={dueDate} onChange={handleDateChange} />
+          <input type="date" ref={todoDueDateElement} />
         </div>
         <div className="col-2">
           <button
@@ -41,10 +31,10 @@ function AddTodo({ handleNewItem }) {
               handleAddButtonClicked;
             }}
           >
-            <IoMdAddCircle />            Add
+            <IoMdAddCircle /> Add
           </button>
         </div>
-      </div>
+      </form>
     </div>
   );
 }
