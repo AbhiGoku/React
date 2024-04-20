@@ -1,18 +1,17 @@
-const TodoItem = ({ todoDate, todoName, onDeleteClick }) => {
+import { MdDeleteForever } from "react-icons/md";
+const TodoItem = ({ todoDate, todoName, onDeleteClick, key }) => {
   return (
-    <div class="container ">
-      <div class="row my-row">
-        <div class="col-4">{todoName}</div>
-        <div class="col-4">{todoDate}</div>
-        <div class="col-2">
+    <div className="container ">
+      <div className="row my-row" key={key}>
+        <div className="col-4">{todoName}</div>
+        <div className="col-4">{todoDate}</div>
+        <div className="col-2">
           <button
             type="button"
-            class="btn btn-danger my-btn"
-            onClick={() => {
-              onDeleteClick();
-            }}
+            className="btn btn-danger my-btn"
+            onClick={onDeleteClick}
           >
-            Delete
+            <MdDeleteForever /> Delete
           </button>
         </div>
       </div>

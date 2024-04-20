@@ -27,18 +27,22 @@ function App() {
     setTodoItems(newTodoItems);
   };
 
+  const handleDeleteItem = (todoItemName) => {
+    const newTodoItems = todoItems.filter((item) => item.name !== todoItemName);
+    setTodoItems(newTodoItems);
+  };
+
   return (
     <div className="todo-container">
       <AppName></AppName>
-      <AddTodo handleNewItem={onNewItem}></AddTodo>;
+      <AddTodo handleNewItem={onNewItem}></AddTodo>
       <div className="items-container">
-        {initialTodoItems.map((todoList) => (
-          <TodoContent
-          todoItems={todoList}
-          ></TodoContent>
-        ))}
+        <TodoContent
+          todoLists={initialTodoItems}
+          onDeleteClick={handleDeleteItem}
+        ></TodoContent>
       </div>
-      {todoItems.length===0} &&& <WelcomeMsg ></WelcomeMsg>
+      <div>{initialTodoItems.length === 0 && <WelcomeMsg></WelcomeMsg>}</div>
     </div>
   );
 }

@@ -1,14 +1,15 @@
 import TodoItem from "./TodoItem";
 
-function TodoContent({ todoItems }) {
+function TodoContent({ todoLists, onDeleteClick }) {
   return (
     <>
-      <div >
-        {todoItems.map((item) => (
+      <div>
+        {todoLists.map((item) => (
           <TodoItem
-            todoDate={item.todoDate}
-            todoName={item.name}
+            todoDate={item.date}
+            todoName={item.workName}
             onDeleteClick={onDeleteClick}
+            key={item.name}
           ></TodoItem>
         ))}
       </div>
